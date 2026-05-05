@@ -95,7 +95,15 @@ python3 -c 'import json; o=json.load(open("outfit.json","r",encoding="utf-8")); 
 python3 image_service.py --products-json outfit_products.json --out outfit.png
 ```
 
-Ergebnis: `outfit.png` (gestapelt: Hose unten → Oberteil/Oberlayer → Accessoires/Schmuck/Schuhe oben).
+Ergebnis: `outfit.png` wird **strikt nach Rendering-Hierarchie** gestapelt:
+
+- Sandale (ganz unten / Layer 0)
+- Hose (Layer 1)
+- Oberteil (Layer 2)
+- Oberlayer/Blazer (Layer 3)
+- Schuhe (Layer 4)
+- Tasche/Hut (Layer 5)
+- `category_main == "Hüte"` / `"Sonnenbrillen"` ganz oben (Sonderfall)
 
 ### 4) Optional: UI nutzen + Nano-Banana Prompt vorbereiten
 
@@ -131,7 +139,7 @@ Zusätzlich:
 
 `stylist_logic.py` nimmt ein **Anker-Produkt** (per `variant_id`) und sucht passende Ergänzungen per Vektorsuche in PostgreSQL.
 
-- **Regel-Check**: Wenn der Anker ein `Oberteil`/`Oberlayer` ist, werden gezielt Teile aus `Hose` sowie `Accessoires`/`Schmuck` vorgeschlagen.
+- **Ensemble-Building**: Über `get_outfit_recipe(anchor_category)` wird festgelegt, welche Zutaten fehlen (z.B. bei `Oberteil`/`Blazer`: `Hose`, `Tasche`, `Schuhe`, `Hut`). Pro Zutat läuft eine **separate** Vektorsuche, eingeschränkt auf die passenden `category_layer`.
 - **Formality-Match**: Vorschläge haben maximal **\(\pm 1\)** Abweichung im `formality_score` gegenüber dem Anker.
 - **Output**: 3–4 Teile (Anker + bis zu 3 Ergänzungen) als JSON.
 
@@ -156,10 +164,12 @@ Die saisonale Logik wird über `SEASON_CONFIGS` in `stylist_logic.py` gesteuert.
 `image_service.py` lädt die Produktbilder über `cdn_image_url` (oder Fallback-Schema `https://images.ernstings-family.com/ean/{variant_id}/01.jpg`) und kann ein Outfit-Bild als RGBA-Composite erstellen.
 
 - `generate_mask(image_url)`: Dummy-Platzhalter (später Segmentierung via SAM/Nanobanana o.ä.)
-- `compose_outfit(product_list)`: stapelt Bilder nach Layer-Reihenfolge:
-  - Hose unten
-  - Oberteil/Oberlayer mittig
-  - Accessoires/Schmuck/Schuhe oben
+- `compose_outfit(product_list)`: stapelt Bilder nach **Rendering-Hierarchie** (siehe End-to-End Szenario).
+
+Prompt-Vorbereitung für Nano Banana:
+
+- `build_inpainting_prompt_parts(final_outfit_list)`: erzeugt pro Produkt einen Prompt-Teil (z.B. `model wearing ...`, `model carrying ...`) und sortiert nach Rendering-Hierarchie.
+- `build_nanobanana_prompt(render_parts)`: packt diese strukturierte Liste in ein Prompt-Objekt (Vorbereitung, kein API-Call).
 
 Sonderfälle (Sommer-Accessoires):
 

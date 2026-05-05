@@ -134,6 +134,119 @@ def _ensure_same_canvas(images: list[Image.Image], *, bg=(0, 0, 0, 0)) -> tuple[
     return out, (max_w, max_h)
 
 
+def _render_rank(item: dict[str, Any] | ProductImageRef) -> int:
+    """
+    Rendering-Hierarchie (kleiner = unten):
+    - Sandale ganz unten (Layer 0 Sonderfall)
+    - Hose (1)
+    - Oberteil (2)
+    - Oberlayer/Blazer (3)
+    - Schuhe (4)
+    - Tasche/Hut (5)
+    - Hüte/Sonnenbrillen (ganz oben, Sonderfall)
+    """
+
+    if isinstance(item, ProductImageRef):
+        layer = item.category_layer
+        main = item.category_main
+        ctype = item.category_type
+        vid = item.variant_id
+    else:
+        layer = item.get("category_layer")
+        main = item.get("category_main")
+        ctype = item.get("category_type")
+        vid = item.get("variant_id")
+
+    # reuse the special-case logic (sandale bottom, hats/sunglasses top)
+    special = _layer_rank(layer, main, category_type=ctype, variant_id=vid)
+    if special in {0, 100}:
+        return special
+
+    l = (layer or "").strip().lower()
+    m = (main or "").strip().lower()
+
+    if l == "hose":
+        return 1
+    if l == "oberteil":
+        return 2
+    if l in {"oberlayer"}:
+        return 3
+    if l in {"footwear"} or m == "schuhe":
+        return 4
+    if l in {"tasche", "hut"}:
+        return 5
+    if m in {"accessoires", "schmuck"}:
+        return 5
+
+    return 6
+
+
+def build_inpainting_prompt_parts(final_outfit_list: Iterable[dict[str, Any] | ProductImageRef]) -> list[dict[str, Any]]:
+    """
+    Erzeugt pro Produkt einen Prompt-Teil für ein späteres KI-Inpainting/Rendering.
+    Rückgabe ist eine strukturierte Liste (sortiert nach Rendering-Hierarchie).
+    """
+    items = sorted(list(final_outfit_list), key=_render_rank)
+    parts: list[dict[str, Any]] = []
+
+    for it in items:
+        if isinstance(it, ProductImageRef):
+            name = it.name or it.variant_id
+            layer = it.category_layer
+            main = it.category_main
+            vid = it.variant_id
+            img = it.cdn_image_url or build_cdn_image_url(vid)
+        else:
+            vid = str(it.get("variant_id", "")).strip()
+            name = (it.get("name") or vid) if vid else (it.get("name") or "item")
+            layer = it.get("category_layer")
+            main = it.get("category_main")
+            img = (it.get("cdn_image_url") or "").strip() or build_cdn_image_url(vid)
+
+        l = (layer or "").strip().lower()
+        m = (main or "").strip().lower()
+
+        if l in {"hose", "oberteil", "oberlayer"}:
+            instruction = f"model wearing {name}"
+        elif l == "tasche" or m == "accessoires":
+            instruction = f"model carrying {name}"
+        elif l == "hut" or m in {"hüte"}:
+            instruction = f"model wearing {name} on head"
+        elif l == "footwear" or m == "schuhe":
+            instruction = f"model wearing {name} footwear"
+        else:
+            instruction = f"model wearing {name}"
+
+        parts.append(
+            {
+                "variant_id": vid,
+                "name": name,
+                "category_layer": layer,
+                "category_main": main,
+                "image_url": img,
+                "render_rank": _render_rank(it),
+                "inpainting_instruction": instruction,
+            }
+        )
+
+    return parts
+
+
+def build_nanobanana_prompt(render_parts: list[dict[str, Any]]) -> dict[str, Any]:
+    """
+    Minimaler Prompt-Generator (Vorbereitung) für einen späteren Nano-Banana Call.
+    """
+    return {
+        "task": "final_outfit_render",
+        "render_plan": render_parts,
+        "prompt": " ".join(p["inpainting_instruction"] for p in render_parts if p.get("inpainting_instruction")),
+        "notes": [
+            "render_plan ist nach Rendering-Hierarchie sortiert",
+            "image_url ist Produkt-Referenz; mask_url/Segmentation muss später ergänzt werden",
+        ],
+    }
+
+
 def compose_outfit(product_list: Iterable[dict[str, Any] | ProductImageRef]) -> Image.Image:
     """
     Nimmt Outfit-Produkte (z.B. Bluse, Hose, Tasche) und legt sie in Layer-Reihenfolge übereinander.
@@ -149,23 +262,8 @@ def compose_outfit(product_list: Iterable[dict[str, Any] | ProductImageRef]) -> 
     if len(products) < 2:
         raise ValueError("compose_outfit benötigt mindestens 2 Produkte.")
 
-    # Sortieren nach Layer-Rank (unten -> oben)
-    def key(p: dict[str, Any] | ProductImageRef) -> int:
-        if isinstance(p, ProductImageRef):
-            return _layer_rank(
-                p.category_layer,
-                p.category_main,
-                category_type=p.category_type,
-                variant_id=p.variant_id,
-            )
-        return _layer_rank(
-            p.get("category_layer"),
-            p.get("category_main"),
-            category_type=p.get("category_type"),
-            variant_id=p.get("variant_id"),
-        )
-
-    products_sorted = sorted(products, key=key)
+    # Sortierung strikt nach Rendering-Hierarchie (unten -> oben)
+    products_sorted = sorted(products, key=_render_rank)
 
     images: list[Image.Image] = []
     for p in products_sorted:

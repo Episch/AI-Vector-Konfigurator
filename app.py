@@ -10,7 +10,7 @@ from typing import Any
 import streamlit as st
 
 from catalog_vector_db import get_connection
-from image_service import build_cdn_image_url, compose_outfit
+from image_service import build_cdn_image_url, build_inpainting_prompt_parts, build_nanobanana_prompt, compose_outfit
 from stylist_logic import OutfitItem, build_outfit
 
 
@@ -121,25 +121,30 @@ def _nano_banana_prompt(outfit: list[OutfitItem]) -> dict[str, Any]:
     """
     Nur Prompt-Vorbereitung (kein API-Call).
     """
-    anchor = outfit[0] if outfit else None
-    return {
-        "task": "final_outfit_render",
-        "style": {
-            "background": "clean studio, neutral light gray",
-            "lighting": "softbox, evenly lit",
-            "shadow": "subtle grounded shadow",
-            "output": "single outfit composite, realistic textile texture",
-        },
-        "constraints": [
-            "keep product colors faithful",
-            "no extra accessories not present in input",
-            "no sandals/flip-flops if outfit is business/formal",
-        ],
-        "anchor": asdict(anchor) if anchor else None,
-        "items": [asdict(x) for x in outfit],
-        "layer_order_hint": ["Hose", "Oberteil/Oberlayer", "Accessoires/Schmuck/Schuhe"],
-        "notes": "mask_url ist aktuell null; später per Segmentierungsservice ergänzen.",
+    render_items = [
+        {
+            "variant_id": x.variant_id,
+            "name": x.name,
+            "cdn_image_url": x.cdn_image_url,
+            "category_layer": x.category_layer,
+            "category_main": x.category_main,
+            "category_type": x.category_type,
+        }
+        for x in outfit
+    ]
+    parts = build_inpainting_prompt_parts(render_items)
+    base = build_nanobanana_prompt(parts)
+    base["style"] = {
+        "background": "clean studio, neutral light gray",
+        "lighting": "softbox, evenly lit",
+        "shadow": "subtle grounded shadow",
+        "output": "single outfit composite, realistic textile texture",
     }
+    base["constraints"] = [
+        "keep product colors faithful",
+        "no extra accessories not present in input",
+    ]
+    return base
 
 
 def _catalog_index(items: list[CatalogItem]) -> dict[str, CatalogItem]:

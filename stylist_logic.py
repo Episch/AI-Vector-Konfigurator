@@ -72,6 +72,27 @@ SEASON_CONFIGS: dict[str, SeasonConfig] = {
 }
 
 
+def get_outfit_recipe(anchor_category: str | None) -> list[str]:
+    """
+    Definiert die "Zutaten" für ein vollständiges Outfit/Rendering.
+
+    Rückgabe sind Ziel-Kategorien auf Layer-Ebene (plus spezielle Labels wie "Schuhe"),
+    die anschließend jeweils via separater Vektorsuche befüllt werden.
+    """
+    a = (anchor_category or "").strip().lower()
+
+    # Anker ist Oberteil / Blazer / Oberlayer
+    if a in {"oberteil", "oberlayer", "blazer"}:
+        return ["Hose", "Tasche", "Schuhe", "Hut"]
+
+    # Anker ist Hose
+    if a == "hose":
+        return ["Oberteil", "Oberlayer", "Schuhe", "Accessoires"]
+
+    # Fallback: versuche ein generisches Set zu füllen
+    return ["Hose", "Oberteil", "Schuhe", "Accessoires"]
+
+
 @dataclass(frozen=True)
 class OutfitItem:
     variant_id: str
@@ -276,8 +297,9 @@ def build_outfit(
     min_formality = max(1, int(anchor_formality) - 1) if anchor_formality is not None else None
     max_formality = min(5, int(anchor_formality) + 1) if anchor_formality is not None else None
 
-    picked: list[dict[str, Any]] = []
     exclude_ids: list[str] = [anchor_variant_id]
+
+    final_outfit_list: list[dict[str, Any]] = []
 
     def pick_one(
         *,
@@ -305,7 +327,16 @@ def build_outfit(
         if chosen is None:
             return None
         exclude_ids.append(chosen["variant_id"])
-        picked.append(chosen)
+        final_outfit_list.append(
+            {
+                "variant_id": chosen.get("variant_id"),
+                "name": chosen.get("name"),
+                "cdn_image_url": chosen.get("cdn_image_url"),
+                "category_layer": chosen.get("category_layer"),
+                "category_main": chosen.get("category_main"),
+                "category_type": chosen.get("category_type"),
+            }
+        )
         return chosen
 
     vibe = (keyword_filter or "").strip().lower()
@@ -324,27 +355,32 @@ def build_outfit(
                 top_k=slot.get("top_k", top_k_per_slot),
             )
     else:
-        # Default-Regeln (fallback), abhängig vom Anker
-        # Wenn der Anker ein (Top-)Teil ist, suchen wir gezielt: Hose + Accessoires
-        is_top = anchor_layer in {"Oberteil", "Oberlayer"} or (anchor_main or "").lower().startswith("damen-")
+        # Ensemble-Building (Pflichtenheft): Anker-Layer -> Rezept -> pro fehlendem Layer eigene Suche
+        recipe = get_outfit_recipe(anchor_layer)
+        for need in recipe:
+            n = need.strip().lower()
 
-        if is_top:
-            pick_one(category_layer_in=["Hose"])
-
-            # 1 Accessoire (Tasche/Gürtel/Tuch/Hut) + 1 Schmuck oder Schuhe, wenn möglich
-            pick_one(category_main_in=["Accessoires"])
-
-            second = pick_one(category_main_in=["Schmuck"])
-            if second is None:
-                pick_one(category_main_in=["Schuhe"])
-        else:
-            # Fallback: wenn der Anker kein Top ist, ergänze mit einem Top und 1-2 Accessoires.
-            pick_one(category_layer_in=["Oberteil", "Oberlayer"])
-            pick_one(category_main_in=["Accessoires"])
-            pick_one(category_main_in=["Schmuck"])
-
-    # Maximal 3 Ergänzungen (mit Anker = 4 Teile)
-    picked = picked[:3]
+            # Mapping der "Rezept-Zutaten" auf DB-Filter:
+            if n == "hose":
+                pick_one(category_layer_in=["Hose"])
+            elif n == "oberteil":
+                pick_one(category_layer_in=["Oberteil"])
+            elif n == "oberlayer":
+                pick_one(category_layer_in=["Oberlayer"])
+            elif n == "tasche":
+                pick_one(category_layer_in=["Tasche"], category_main_in=["Accessoires"])
+            elif n == "hut":
+                pick_one(category_layer_in=["Hut"], category_main_in=["Accessoires"])
+            elif n == "schuhe":
+                # In den Daten ist layer oft "Footwear"; main ist "Schuhe"
+                chosen = pick_one(category_layer_in=["Footwear"], category_main_in=["Schuhe"])
+                if chosen is None:
+                    pick_one(category_main_in=["Schuhe"])
+            elif n == "accessoires":
+                pick_one(category_main_in=["Accessoires"])
+            else:
+                # unbekannte Zutat -> versuche über layer
+                pick_one(category_layer_in=[need])
 
     def to_item(d: dict[str, Any], *, similarity: float | None = None) -> OutfitItem:
         return OutfitItem(
@@ -361,7 +397,37 @@ def build_outfit(
         )
 
     outfit: list[OutfitItem] = [to_item(anchor, similarity=1.0)]
-    outfit.extend(to_item(x) for x in picked)
+    # `final_outfit_list` ist die minimal benötigte Payload für Rendering-Pipelines,
+    # die vollständigen Item-Daten kommen aus den DB-Ergebnissen (oben in pick_one).
+    # Für die Rückgabe bauen wir deshalb die vollständigen Items direkt aus den letzten Query-Result-Dicts.
+    #
+    # Da wir die vollständigen Dicts nicht separat speichern, holen wir sie erneut über variant_id
+    # (kleines Dataset, ok) – so bleibt die API stabil.
+    for x in final_outfit_list:
+        vid = x["variant_id"]
+        if not vid:
+            continue
+        with conn.cursor() as cur:
+            cur.execute(
+                f"""
+                SELECT
+                  variant_id,
+                  name,
+                  category_main,
+                  category_layer,
+                  category_type,
+                  formality_score,
+                  reference_url,
+                  cdn_image_url,
+                  mask_url
+                FROM {table_name}
+                WHERE variant_id = %(id)s;
+                """,
+                {"id": vid},
+            )
+            full = _fetch_one_dict(cur)
+            if full:
+                outfit.append(to_item(full))
 
     # Ziel: 3-4 Items (inkl. Anker). Wenn wir nur 2 Ergänzungen finden, bleibt es bei 3 Items.
     return outfit
