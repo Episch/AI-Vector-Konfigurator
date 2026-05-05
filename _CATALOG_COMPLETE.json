@@ -1,0 +1,1759 @@
+{
+  "meta": {
+    "source": "Ernsting's family Online Shop (https://www.ernstings-family.de/damen)",
+    "crawl_date": "2026-05-05",
+    "total_products": 60,
+    "categories": [
+      "Umhängetasche",
+      "Crossbody / Bauchtasche",
+      "Handytasche / Mini Bag",
+      "Shopper",
+      "Flechtgürtel",
+      "Makramee-Gürtel",
+      "Ledergürtel",
+      "Sandale",
+      "Tuch",
+      "Strohhut",
+      "Bluse",
+      "Hemdbluse",
+      "Chinohose",
+      "Culotte / Jeans",
+      "Kniestrümpfe",
+      "Sneaker-Socken",
+      "Socken",
+      "Blazer",
+      "Armband",
+      "Kette",
+      "Ohrringe",
+      "Creolen"
+    ],
+    "notes": [
+      "cdn_image_url ist ein Schätzwert basierend auf Artikelnummer (Schema: images.ernstings-family.com/ean/{nr}/01.jpg) – bitte per API/PDP verifizieren",
+      "mask_url ist null – muss via Nanobanana-API oder Segmentierungsservice generiert werden",
+      "formality_score: 1=sehr casual, 5=sehr formal",
+      "Produkte EF-SOC-004, EF-SOC-005, EF-ARM-004, EF-ARM-005, EF-KET-005 sind anhand der Kategorie inferiert"
+    ]
+  },
+  "catalog": {
+    "Umhängetasche": [
+      {
+        "variant_id": "2263930092",
+        "name": "Umhängetasche Lederimitat Hellgrau",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tasche",
+          "type": "Umhängetasche"
+        },
+        "attributes": {
+          "color_hex": "#C8C8C8",
+          "color_name": "Hellgrau",
+          "material": "100% Polyurethan (Lederimitat), strukturierte Oberfläche",
+          "fit": "Ca. 28 x 28 x 10 cm, verstellbarer Schulterriemen",
+          "details": [
+            "Reißverschluss-Hauptfach",
+            "Reißverschlussfach innen",
+            "2 Reißverschlussfächer außen",
+            "Futter 100% Polyester"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Tasche Umhängetasche Hellgrau Lederimitat Polyurethan strukturiert Schulterriemen klassisch Damen Accessoire Medium casual",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-umhaengetasche-aus-lederimitat-hellgrau.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/2263930092/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8414160208",
+        "name": "Umhängetasche mit Plüschbesatz Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tasche",
+          "type": "Umhängetasche"
+        },
+        "attributes": {
+          "color_hex": "#D2B48C",
+          "color_name": "Beige",
+          "material": "Polyester mit Polyurethan-Beschichtung (Lederimitat)",
+          "fit": "Ca. 21 x 15 x 7 cm, breiter Schulterriemen",
+          "details": [
+            "Plüschbesatz",
+            "'Unique'-Schriftzug auf Riemen",
+            "Reißverschluss-Hauptfach",
+            "Reißverschlussfach innen",
+            "Reißverschlussfach außen hinten"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tasche Umhängetasche Beige Plüsch Fell-Optik Leder-Optik klein trendy casual Damen Accessoire Statement",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-umhaengetasche-mit-plueschbesatz-beige.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8414160208/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Crossbody / Bauchtasche": [
+      {
+        "variant_id": "8717810220",
+        "name": "Damen Tasche mit zwei Fächern Schwarz",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tasche",
+          "type": "Crossbody / Bauchtasche"
+        },
+        "attributes": {
+          "color_hex": "#1A1A1A",
+          "color_name": "Schwarz",
+          "material": "Synthetik",
+          "fit": "Kompakt, längenverstellbarer Riemen, auch als Bauchtasche tragbar",
+          "details": [
+            "2 Reißverschlussfächer",
+            "Reißverschlussfach innen",
+            "Als Bauchtasche tragbar",
+            "verstellbarer Riemen"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tasche Crossbody Bauchtasche Schwarz Synthetik kompakt vielseitig Damen casual urban",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-tasche-mit-zwei-faechern-schwarz-8717810220.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8717810220/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Handytasche / Mini Bag": [
+      {
+        "variant_id": "8426450208",
+        "name": "Damen Handytasche Lederimitat Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tasche",
+          "type": "Handytasche / Mini Bag"
+        },
+        "attributes": {
+          "color_hex": "#C8A87A",
+          "color_name": "Beige",
+          "material": "100% Polyester mit PU-Beschichtung (Lederimitat)",
+          "fit": "Ca. 12 x 19 x 3 cm, abnehmbarer Gurt",
+          "details": [
+            "'Silberkind'-Applikation",
+            "Reißverschluss-Hauptfach",
+            "Steckfach innen",
+            "Gurt mit Karabinerhaken, abnehmbar"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tasche Handytasche Mini Bag Beige Lederimitat Applikation Schriftzug kompakt Damen casual street",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-handytasche-aus-lederimitat-beige.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8426450208/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Shopper": [
+      {
+        "variant_id": "8663320220",
+        "name": "Damen Shopper Tasche Kunstfell Schwarz/Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tasche",
+          "type": "Shopper"
+        },
+        "attributes": {
+          "color_hex": "#1A1A1A",
+          "color_name": "Schwarz mit Beige-Kunstfell",
+          "material": "Synthetik mit Kunstfell-Applikation",
+          "fit": "Ca. 18 x 40 x 40 cm, lange Henkel",
+          "details": [
+            "Kunstfell-Applikation an Rändern",
+            "3 Innenfächer",
+            "Reißverschlussfach innen",
+            "Druckknopffach innen"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Tasche Shopper Schwarz Beige Kunstfell Fell Applikation edel Statement Damen herbst winter casual",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-tasche-mit-kunstfell-schwarz-beige-8663320220.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8663320220/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Flechtgürtel": [
+      {
+        "variant_id": "8718010220",
+        "name": "Damen Gürtel Flecht-Optik Schwarz",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Gürtel",
+          "type": "Flechtgürtel"
+        },
+        "attributes": {
+          "color_hex": "#1A1A1A",
+          "color_name": "Schwarz",
+          "material": "Elastisch, Glattlederimitat-Details",
+          "fit": "Einheitsgröße, individuelle Tragelänge",
+          "details": [
+            "Flecht-Optik",
+            "Silberne Dornschließe",
+            "Elastisch"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Gürtel Flechtgürtel Schwarz elastisch Lederimitat silberne Schnalle casual Boho Damen Accessoire",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-guertel-in-flecht-optik-schwarz-8718010220.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8718010220/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8718010208",
+        "name": "Damen Gürtel Flecht-Optik Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Gürtel",
+          "type": "Flechtgürtel"
+        },
+        "attributes": {
+          "color_hex": "#D2B48C",
+          "color_name": "Beige",
+          "material": "Elastisch, Glattlederimitat-Details",
+          "fit": "Einheitsgröße, individuelle Tragelänge",
+          "details": [
+            "Flecht-Optik",
+            "Silberne Dornschließe",
+            "Elastisch",
+            "Naturton"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Gürtel Flechtgürtel Beige Natur elastisch Lederimitat silberne Schnalle casual Sommer Damen",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-guertel-in-flecht-optik-beige-8718010208.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8718010208/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Makramee-Gürtel": [
+      {
+        "variant_id": "8737630319",
+        "name": "Damen Gürtel Makramee-Optik Oliv",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Gürtel",
+          "type": "Makramee-Gürtel"
+        },
+        "attributes": {
+          "color_hex": "#6B8E23",
+          "color_name": "Oliv",
+          "material": "Elastisch, Makramee-Optik",
+          "fit": "Einheitsgröße",
+          "details": [
+            "Schnalle in Holz-Optik",
+            "Dornschließe",
+            "Boho-Style"
+          ],
+          "formality_score": 1
+        },
+        "vector_content": "Gürtel Makramee Oliv Boho Natur elastisch Holz-Schnalle Beach Sommer Damen casual",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-guertel-in-makramee-optik-oliv-8737630319.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8737630319/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8737630220",
+        "name": "Damen Gürtel Makramee-Optik Schwarz",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Gürtel",
+          "type": "Makramee-Gürtel"
+        },
+        "attributes": {
+          "color_hex": "#1A1A1A",
+          "color_name": "Schwarz",
+          "material": "Elastisch, Makramee-Optik",
+          "fit": "Einheitsgröße",
+          "details": [
+            "Schnalle in Holz-Optik",
+            "Dornschließe",
+            "Boho-Style",
+            "Vielseitig kombinierbar"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Gürtel Makramee Schwarz Boho elastisch Holz-Schnalle vielseitig Damen casual street",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-guertel-in-makramee-optik-schwarz-8737630220.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8737630220/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Ledergürtel": [
+      {
+        "variant_id": "8737660265",
+        "name": "Damen Gürtel Lederoptik Rosa",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Gürtel",
+          "type": "Ledergürtel"
+        },
+        "attributes": {
+          "color_hex": "#FFB6C1",
+          "color_name": "Rosa",
+          "material": "Lederimitat, glatt",
+          "fit": "Klassisch, variabel",
+          "details": [
+            "Goldene Dornschließe",
+            "Glatte Oberfläche",
+            "Feminine Farbe"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Gürtel Lederimitat Rosa Gold Schnalle feminin klassisch Damen Accessoire Party casual",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-guertel-in-lederoptik-rosa-8737660265.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8737660265/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Sandale": [
+      {
+        "variant_id": "8348970265",
+        "name": "Damen Zehentrenner-Sandalen Blumen Beige",
+        "category": {
+          "main": "Schuhe",
+          "layer": "Footwear",
+          "type": "Sandale"
+        },
+        "attributes": {
+          "color_hex": "#D2B48C",
+          "color_name": "Beige",
+          "material": "Synthetik (Obermaterial), Kunststoff (Sohle)",
+          "fit": "Zehentrenner, Sohle ca. 3,5 cm",
+          "details": [
+            "Blumen-Applikationen",
+            "Profilierte Laufsohle",
+            "Weiche Decksohle"
+          ],
+          "formality_score": 1
+        },
+        "vector_content": "Sandale Zehentrenner Beige Blumen Beach Sommer flach casual Damen Schuh Urlaub",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-zehentrenner-sandalen-mit-blumen-besatz-beige.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8348970265/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8736460295",
+        "name": "Damen Sandalen Plateau Bast Blau",
+        "category": {
+          "main": "Schuhe",
+          "layer": "Footwear",
+          "type": "Sandale"
+        },
+        "attributes": {
+          "color_hex": "#4A7BA7",
+          "color_name": "Blau",
+          "material": "Synthetik mit Bast-Muster",
+          "fit": "Plateau ca. 4 cm, 2 Riemen mit Schnalle",
+          "details": [
+            "Bast-Muster auf Riemen",
+            "Verstellbare Schnalle",
+            "Fußbett",
+            "Profilierte Plateausohle"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Sandale Plateau Blau Bast Riemen verstellbar casual Sommer Damen Schuh",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-sandalen-mit-zwei-riemen-blau-8736460295.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8736460295/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8464790901",
+        "name": "Damen Sandalen mit Plateau Champagner",
+        "category": {
+          "main": "Schuhe",
+          "layer": "Footwear",
+          "type": "Sandale"
+        },
+        "attributes": {
+          "color_hex": "#F7E7CE",
+          "color_name": "Champagner",
+          "material": "Synthetik",
+          "fit": "5 cm Plateau, gekreuzte Riemen",
+          "details": [
+            "Kork-Optik Sohle",
+            "Glänzende Riemen",
+            "Gepolstertes Fußbett",
+            "Profilierte Laufsohle"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Sandale Plateau Champagner Gold glänzend Kork Party elegant Sommer Damen Schuh",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-sandalen-mit-plateau-champagner-8464790901.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8464790901/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8604080325",
+        "name": "Damen Sandalen Veloursleder-Optik Hellbraun",
+        "category": {
+          "main": "Schuhe",
+          "layer": "Footwear",
+          "type": "Sandale"
+        },
+        "attributes": {
+          "color_hex": "#C8A165",
+          "color_name": "Hellbraun",
+          "material": "Synthetik (Veloursleder-Imitat)",
+          "fit": "Flach, 2 breite Riemen mit Schnalle",
+          "details": [
+            "Flecht-Details an Riemen",
+            "Matt-goldene Metallschnalle",
+            "Fußbett",
+            "Weiche Textil-Decksohle"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Sandale flach Hellbraun Veloursleder Boho casual Damen Schuh Sommer Natur",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-sandalen-in-veloursleder-optik-hellbraun-8604080325.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8604080325/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8604860295",
+        "name": "Damen Sandalen Zehentrenner Graphit/Silber",
+        "category": {
+          "main": "Schuhe",
+          "layer": "Footwear",
+          "type": "Sandale"
+        },
+        "attributes": {
+          "color_hex": "#808080",
+          "color_name": "Graphit/Silber",
+          "material": "Synthetik, Lederimitat (gepolsterte Sohle)",
+          "fit": "Zehentrenner, flacher Absatz",
+          "details": [
+            "Glänzende Ziersteine",
+            "Flacher Absatz",
+            "Gepolsterte Innensohle"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Sandale Zehentrenner Graphit Silber Glitzer Ziersteine Party Damen Schuh elegant Sommer",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-sandalen-mit-zehentrenner-damen-sandal-graphit-silber-8604910832.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8604860295/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Tuch": [
+      {
+        "variant_id": "8711340295",
+        "name": "Damen Tuch Herz-Print Türkis/Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tuch",
+          "type": "Tuch"
+        },
+        "attributes": {
+          "color_hex": "#00868B",
+          "color_name": "Dunkeltuerkis/Beige",
+          "material": "Leichtes Gewebe mit Folien-Print",
+          "fit": "Leicht, Längsseiten gesäumt, kurze Seiten gefranst",
+          "details": [
+            "Herz-Print allover",
+            "Foliendruck Silber-Akzente",
+            "Leicht transparent"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tuch Schal Türkis Beige Herz-Print leicht Sommer casual Damen Accessoire Boho",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-tuch-dunkeltuerkis-beige-helltuerkis-8711340295.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8711340295/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8735280325",
+        "name": "Damen Tuch Tierprint Allover Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tuch",
+          "type": "Tuch"
+        },
+        "attributes": {
+          "color_hex": "#D2B48C",
+          "color_name": "Beige",
+          "material": "Leichtes Gewebe",
+          "fit": "Ca. 185 x 85 cm",
+          "details": [
+            "Tierisches Allover-Muster",
+            "Leichtes Material",
+            "Vielseitig tragbar"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tuch Beige Animal Print Safari Tier leicht Sommer casual Damen Accessoire",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-tuch-mit-tierischem-allover-motiv-beige-8735280325.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8735280325/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8671950265",
+        "name": "Damen Tuch Florales Allover Rosa/Weiß",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tuch",
+          "type": "Tuch"
+        },
+        "attributes": {
+          "color_hex": "#FFB6C1",
+          "color_name": "Rosa/Weiß",
+          "material": "Leichtes Gewebe",
+          "fit": "Ca. 70 x 180 cm, rundum gesäumt",
+          "details": [
+            "Florales Allover-Muster",
+            "Leicht und luftig",
+            "Vielseitig tragbar"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tuch Rosa Weiß Blumen Floral leicht luftig feminin Damen casual Party Sommer",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-tuch-mit-allover-muster-rosa-weiss-8671950265.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8671950265/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8733230901",
+        "name": "Damen Tuch Punkte-Allover Weiß/Rosa/Grün",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tuch",
+          "type": "Tuch"
+        },
+        "attributes": {
+          "color_hex": "#FFFFFF",
+          "color_name": "Weiß/Rosa/Grün",
+          "material": "Leichtes, leicht transparentes Gewebe mit karierter Struktur",
+          "fit": "Leicht transparent, rundum gesäumt",
+          "details": [
+            "Punkte-Allover verschiedene Farben",
+            "Karostruktur",
+            "Leicht transparent"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tuch Weiß Rosa Grün Punkte Karo leicht transparent Sommer casual Damen Accessoire",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-tuch-mit-punkte-allover-weiss-rosa-gruen-8733230901.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8733230901/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8733460265",
+        "name": "Damen Tuch Muster mit Tasseln Rot",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Tuch",
+          "type": "Tuch"
+        },
+        "attributes": {
+          "color_hex": "#CC2200",
+          "color_name": "Rot",
+          "material": "Leichtes Gewebe",
+          "fit": "Lange Seiten gesäumt, kurze Seiten mit Tasseln",
+          "details": [
+            "Allover-Muster",
+            "Bunte Tasseln",
+            "Statement-Farbe"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Tuch Rot Tasseln Fransen Muster Statement Sommer Beach Damen casual Boho",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-tuch-mit-tasseln-rot-8733460265.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8733460265/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Strohhut": [
+      {
+        "variant_id": "8620490901",
+        "name": "Damen Strohhut Ibiza-Style Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Hut",
+          "type": "Strohhut"
+        },
+        "attributes": {
+          "color_hex": "#D4C5A9",
+          "color_name": "Beige",
+          "material": "100% Papierstroh (geflochten)",
+          "fit": "Einheitsgröße, breite Krempe",
+          "details": [
+            "Hutband aus Perlen und Ziersteinchen",
+            "Breite Krempe",
+            "Ibiza-Style"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Hut Strohhut Beige Ibiza Beach Perlen Sommer Urlaub Damen casual boho",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-strohhut-im-ibiza-style-beige-8620490901.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8620490901/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8737880901",
+        "name": "Damen Strohhut Unifarben Beige",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Hut",
+          "type": "Strohhut"
+        },
+        "attributes": {
+          "color_hex": "#D4C5A9",
+          "color_name": "Beige",
+          "material": "100% Papierstroh (geflochten)",
+          "fit": "Einheitsgröße, breite Krempe, Bindeband innen",
+          "details": [
+            "Unifarben",
+            "Breite Krempe",
+            "Bindeband zur Weitenregulierung"
+          ],
+          "formality_score": 1
+        },
+        "vector_content": "Hut Strohhut Beige uni schlicht Beach Sommer Damen casual Urlaub",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-strohhut-in-unifarben-beige-8737880901.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8737880901/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8476500315",
+        "name": "Damen Strohhut gestreift Oliv/Beige/Weiß",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Hut",
+          "type": "Strohhut"
+        },
+        "attributes": {
+          "color_hex": "#6B8E23",
+          "color_name": "Oliv/Beige/Weiß",
+          "material": "100% Papierstroh (geflochten)",
+          "fit": "Einheitsgröße, breite Krempe",
+          "details": [
+            "Streifen Oliv, Beige, Weiß",
+            "Breite Krempe",
+            "Natürlicher Look"
+          ],
+          "formality_score": 1
+        },
+        "vector_content": "Hut Strohhut Oliv Beige gestreift Natur Beach Sommer Damen casual Boho",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-strohhut-mit-streifen-oliv-8476500315.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8476500315/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8350930901",
+        "name": "Damen Strohhut Raffia mit Schleife Natur",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Hut",
+          "type": "Strohhut"
+        },
+        "attributes": {
+          "color_hex": "#C8A87A",
+          "color_name": "Natur",
+          "material": "100% Raffia (geflochten)",
+          "fit": "Einheitsgröße, breite Krempe",
+          "details": [
+            "Schleife an der Krempe",
+            "Fransiger Abschluss",
+            "Naturfaser Raffia"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Hut Strohhut Raffia Natur Schleife Boho feminin Beach Sommer Damen casual",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-strohhut-mit-schleife-natur.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8350930901/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8260320901",
+        "name": "Damen Strohhut Raffia Natur Uni",
+        "category": {
+          "main": "Accessoires",
+          "layer": "Hut",
+          "type": "Strohhut"
+        },
+        "attributes": {
+          "color_hex": "#C8A87A",
+          "color_name": "Natur",
+          "material": "100% Raffia (geflochten)",
+          "fit": "Einheitsgröße, breite Krempe, Schleife",
+          "details": [
+            "Schleife",
+            "Fransiger Abschluss",
+            "Leichte Qualität",
+            "Handwäsche möglich"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Hut Strohhut Raffia Natur leicht Schleife Boho Beach Sommer Damen casual",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-strohhut-aus-raffia-natur.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8260320901/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Bluse": [
+      {
+        "variant_id": "8371700208",
+        "name": "Damen Oversize-Bluse Hemd-Optik Creme Gestreift",
+        "category": {
+          "main": "Damen-Shirts & Blusen",
+          "layer": "Oberteil",
+          "type": "Bluse"
+        },
+        "attributes": {
+          "color_hex": "#FFF5DC",
+          "color_name": "Creme/Helllila/Beere gestreift",
+          "material": "Nicht spezifiziert (gewebte Bluse)",
+          "fit": "Oversize, langer Schnitt, seitlich geschlitzt",
+          "details": [
+            "Kentkragen",
+            "Durchgehende Knopfleiste",
+            "Brusttasche",
+            "Geknöpfte Manschetten",
+            "Gerundeter Saum"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Bluse Hemd Creme Streifen Oversize casual business Kentkragen Knopfleiste Damen Oberteile",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-bluse-in-hemd-optik-creme-8371700208.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8371700208/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8651060258",
+        "name": "Damen Bluse Satin-Optik Bordeaux",
+        "category": {
+          "main": "Damen-Shirts & Blusen",
+          "layer": "Oberteil",
+          "type": "Bluse"
+        },
+        "attributes": {
+          "color_hex": "#800020",
+          "color_name": "Bordeaux",
+          "material": "Satin-Optik, leicht glänzend",
+          "fit": "Regular, leicht gerundeter Saum",
+          "details": [
+            "Hemdkragen",
+            "Durchgehende Knopfleiste",
+            "Geknöpfte Manschetten",
+            "Leicht glänzend"
+          ],
+          "formality_score": 4
+        },
+        "vector_content": "Bluse Satin Bordeaux Rot glänzend edel Party Business Damen Oberteil elegant",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-bluse-in-satin-optik-bordeaux-8651060258.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8651060258/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8477980312",
+        "name": "Damen Oversize-Bluse Hemd-Look Hellgrün Gestreift",
+        "category": {
+          "main": "Damen-Shirts & Blusen",
+          "layer": "Oberteil",
+          "type": "Bluse"
+        },
+        "attributes": {
+          "color_hex": "#90EE90",
+          "color_name": "Hellgrün/Dunkelblau gestreift",
+          "material": "Gewebtes Material",
+          "fit": "Oversize, seitlich geschlitzt",
+          "details": [
+            "Kentkragen",
+            "Durchgehende Knopfleiste",
+            "Brusttasche",
+            "Geknöpfte Manschetten",
+            "Gerundeter Saum"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Bluse Hemd Hellgrün Streifen Oversize casual lässig locker Damen Oberteil Sommer",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-bluse-im-oversized-look-hellgruen-8477980312.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8477980312/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8662160208",
+        "name": "Damen Bluse Leo-Print Serafino Beige/Schwarz",
+        "category": {
+          "main": "Damen-Shirts & Blusen",
+          "layer": "Oberteil",
+          "type": "Bluse"
+        },
+        "attributes": {
+          "color_hex": "#D2B48C",
+          "color_name": "Beige/Schwarz (Leo)",
+          "material": "LENZING™ ECOVERO™ Viskose-Mix (nachhaltig)",
+          "fit": "Locker, hinten länger, gerundeter Saum",
+          "details": [
+            "Leo-Print allover",
+            "Serafino-Ausschnitt",
+            "Bündchen an Ärmeln",
+            "Nachhaltige Faser (ECOVERO)"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Bluse Leo Animal Print Beige Schwarz Viskose nachhaltig locker casual Damen Oberteil",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-bluse-mit-serafino-ausschnitt-schwarz-beige-8662160208.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8662160208/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Hemdbluse": [
+      {
+        "variant_id": "8558470298",
+        "name": "Damen Hemdbluse Maritime Stickerei Dunkelblau",
+        "category": {
+          "main": "Damen-Shirts & Blusen",
+          "layer": "Oberteil",
+          "type": "Hemdbluse"
+        },
+        "attributes": {
+          "color_hex": "#1A3A5C",
+          "color_name": "Dunkelblau",
+          "material": "100% Baumwolle",
+          "fit": "Regular, Langarm, gerundeter Saum",
+          "details": [
+            "Maritime Stickerei allover",
+            "Kentkragen",
+            "Durchgehende Knopfleiste",
+            "Geknöpfte Manschetten"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Hemdbluse Dunkelblau Baumwolle maritime Stickerei Anker casual Sommer Damen Oberteil",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-hemdbluse-mit-rundem-saum-dunkelblau-8558470298.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8558470298/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Chinohose": [
+      {
+        "variant_id": "8611570319",
+        "name": "Damen Chinohose Oliv Baumwoll-Mix",
+        "category": {
+          "main": "Damen-Hosen",
+          "layer": "Hose",
+          "type": "Chinohose"
+        },
+        "attributes": {
+          "color_hex": "#6B8E23",
+          "color_name": "Oliv",
+          "material": "Baumwoll-Mix",
+          "fit": "Locker, 5 Gürtelschlaufen, elastischer Einsatz Bund",
+          "details": [
+            "Knopf und Reißverschluss",
+            "2 Einschubtaschen vorne",
+            "2 Gesäßtaschen",
+            "Elastischer Bundeinsat"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Hose Chinohose Oliv Baumwolle casual locker elastisch Damen Hosen Allround",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-chinohose-mit-elastischem-bund-oliv-8611570319.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8611570319/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8701190265",
+        "name": "Damen Chinohose mit Bindegürtel Beige",
+        "category": {
+          "main": "Damen-Hosen",
+          "layer": "Hose",
+          "type": "Chinohose"
+        },
+        "attributes": {
+          "color_hex": "#D2B48C",
+          "color_name": "Beige",
+          "material": "Viskose-Mix",
+          "fit": "Regular, Rüschen am Bund und Taschen",
+          "details": [
+            "Gemusterter Bindegürtel",
+            "Rüschen am Bund",
+            "Einschubtaschen mit Rüschen",
+            "Imitierte Gesäßtaschen"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Hose Chinohose Beige Viskose Bindegürtel Rüschen feminin casual Damen Sommer",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-chinohose-mit-bindeguertel-beige-8701190265.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8701190265/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8623300208",
+        "name": "Damen Chinohose Bio-Baumwolle Beige Canvas",
+        "category": {
+          "main": "Damen-Hosen",
+          "layer": "Hose",
+          "type": "Chinohose"
+        },
+        "attributes": {
+          "color_hex": "#D2B48C",
+          "color_name": "Beige",
+          "material": "Bio-Baumwolle (OCS-zertifiziert)",
+          "fit": "Classic Five-Pocket, 6 Gürtelschlaufen",
+          "details": [
+            "Canvasgürtel inklusive",
+            "Knöpfbare Gesäßtaschen",
+            "Bio-Baumwolle OCS-zertifiziert",
+            "Nachhaltig"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Hose Chinohose Beige Bio-Baumwolle nachhaltig OCS Canvas casual classic Damen Sommer",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-chinohose-mit-canvasguertel-beige-8623300208.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8623300208/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8611570298",
+        "name": "Damen Chinohose Dunkelblau Baumwoll-Mix",
+        "category": {
+          "main": "Damen-Hosen",
+          "layer": "Hose",
+          "type": "Chinohose"
+        },
+        "attributes": {
+          "color_hex": "#1A3A5C",
+          "color_name": "Dunkelblau",
+          "material": "Baumwoll-Mix",
+          "fit": "Locker, 5 Gürtelschlaufen, elastischer Bund",
+          "details": [
+            "Knopf und Reißverschluss",
+            "2 Einschubtaschen vorne",
+            "2 Gesäßtaschen",
+            "Elastischer Bundeinsatz"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Hose Chinohose Dunkelblau Baumwolle casual locker Damen Hosen allround urban",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-chinohose-mit-elastischem-bund-dunkelblau-8611570298.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8611570298/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Culotte / Jeans": [
+      {
+        "variant_id": "8690300295",
+        "name": "Damen Culotte Jeans Blau",
+        "category": {
+          "main": "Damen-Hosen",
+          "layer": "Hose",
+          "type": "Culotte / Jeans"
+        },
+        "attributes": {
+          "color_hex": "#4A7BA7",
+          "color_name": "Blau (Denim)",
+          "material": "Denim (Jeansstoff)",
+          "fit": "Culotte-Style, 6 Gürtelschlaufen",
+          "details": [
+            "Knopf und Reißverschluss",
+            "2 Vordertaschen",
+            "2 Gesäßtaschen",
+            "Culotte-Länge unterhalb Knie"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Hose Jeans Culotte Blau Denim casual lässig Sommer Damen Hosen street urban",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-culotte-jeans-mit-4-taschen-blau-8690300295.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8690300295/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Kniestrümpfe": [
+      {
+        "variant_id": "2264690083",
+        "name": "Damen Stützkniestrümpfe Natur 40 DEN",
+        "category": {
+          "main": "Damen-Socken",
+          "layer": "Socken",
+          "type": "Kniestrümpfe"
+        },
+        "attributes": {
+          "color_hex": "#E8D5B7",
+          "color_name": "Natur/Hautfarbe",
+          "material": "Polyamid/Elasthan",
+          "fit": "Kniehoch, 40 DEN, Komfortbund",
+          "details": [
+            "40 DEN",
+            "Stützfunktion",
+            "Extrabreiter Komfortbund",
+            "Verstärkte Spitze",
+            "OEKO-TEX®-zertifiziert",
+            "Dezenter Glanz"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Socken Kniestrümpfe Natur transparent Stützstrümpfe 40 DEN Damen klassisch elegant",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-socken-struempfe/1-paar-damen-stuetzkniestruempfe-natur.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/2264690083/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "2264630081",
+        "name": "Damen Kniestrümpfe Make Up 15 DEN 2er-Pack",
+        "category": {
+          "main": "Damen-Socken",
+          "layer": "Socken",
+          "type": "Kniestrümpfe"
+        },
+        "attributes": {
+          "color_hex": "#E8C9A0",
+          "color_name": "Make Up (Hautfarbe)",
+          "material": "85% Polyamid, 15% Elasthan",
+          "fit": "Kniehoch, 15 DEN, transparent",
+          "details": [
+            "15 DEN",
+            "Leicht transparent",
+            "Komfortbund",
+            "Verstärkte Spitze",
+            "2 Paar"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Socken Kniestrümpfe Make Up transparent 15 DEN Damen klassisch elegant Business",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/ernstings-de/2-paar-damen-kniestruempfe-15-den-make.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/2264630081/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "2264690010",
+        "name": "Damen Stützkniestrümpfe Schwarz 40 DEN",
+        "category": {
+          "main": "Damen-Socken",
+          "layer": "Socken",
+          "type": "Kniestrümpfe"
+        },
+        "attributes": {
+          "color_hex": "#1A1A1A",
+          "color_name": "Schwarz",
+          "material": "Polyamid/LYCRA®-Elasthan",
+          "fit": "Kniehoch, 40 DEN, Komfortbund",
+          "details": [
+            "40 DEN",
+            "LYCRA®-Elasthan",
+            "Stützfunktion",
+            "Komfortbund",
+            "Verstärkte Spitze",
+            "OEKO-TEX®-zertifiziert"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Socken Kniestrümpfe Schwarz Stützstrümpfe 40 DEN LYCRA Damen elegant Business",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/1-paar-damen-stuetzkniestruempfe-mit-40-den-schwarz.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/2264690010/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Sneaker-Socken": [
+      {
+        "variant_id": "EF-SOC-004",
+        "name": "Damen Sneaker-Socken Baumwolle 3er-Pack Weiß",
+        "category": {
+          "main": "Damen-Socken",
+          "layer": "Socken",
+          "type": "Sneaker-Socken"
+        },
+        "attributes": {
+          "color_hex": "#FFFFFF",
+          "color_name": "Weiß",
+          "material": "Baumwoll-Mix",
+          "fit": "Knöchelhoch, unsichtbarer Look",
+          "details": [
+            "3er-Pack",
+            "Knöchelhoch",
+            "Unsichtbar im Schuh",
+            "Silikonband am Abschluss",
+            "Weiche Qualität"
+          ],
+          "formality_score": 1
+        },
+        "vector_content": "Socken Sneaker Weiß Baumwolle casual sport Damen knöchelhoch unsichtbar",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-socken-sneaker-socken",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/EF-SOC-004/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Socken": [
+      {
+        "variant_id": "EF-SOC-005",
+        "name": "Damen Socken mit Print 3er-Pack Bunt",
+        "category": {
+          "main": "Damen-Socken",
+          "layer": "Socken",
+          "type": "Socken"
+        },
+        "attributes": {
+          "color_hex": "#FF69B4",
+          "color_name": "Bunt/Print",
+          "material": "Baumwoll-Mix",
+          "fit": "Wadenlang, reguläre Socken",
+          "details": [
+            "3er-Pack",
+            "Allover-Print verschiedene Motive",
+            "Elastikbund",
+            "Weiche Qualität"
+          ],
+          "formality_score": 1
+        },
+        "vector_content": "Socken Damen bunt Print casual fun Baumwolle wadenlang",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-socken-socken",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/EF-SOC-005/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Blazer": [
+      {
+        "variant_id": "8664500318",
+        "name": "Damen Blazer Cord Dunkelgrün",
+        "category": {
+          "main": "Damen-Blazer",
+          "layer": "Oberlayer",
+          "type": "Blazer"
+        },
+        "attributes": {
+          "color_hex": "#2D5A27",
+          "color_name": "Dunkelgrün",
+          "material": "Baumwolle (Cotton made in Africa, nachhaltig), feiner Cord",
+          "fit": "Leicht tailliert, 1-Knopf",
+          "details": [
+            "Reverskragen",
+            "1 Knopf",
+            "2 Aufgesetzte Pattentaschen",
+            "Geknöpfte Manschetten",
+            "Cord-Struktur"
+          ],
+          "formality_score": 4
+        },
+        "vector_content": "Blazer Cord Dunkelgrün Baumwolle tailliert klassisch elegant Business casual Damen Outerwear",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-blazer-aus-feinem-cord-dunkelgruen-8664500318.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8664500318/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8676760298",
+        "name": "Damen Blazer Struktur Dunkelblau",
+        "category": {
+          "main": "Damen-Blazer",
+          "layer": "Oberlayer",
+          "type": "Blazer"
+        },
+        "attributes": {
+          "color_hex": "#1A3A5C",
+          "color_name": "Dunkelblau",
+          "material": "Leichtes Strukturgewebe",
+          "fit": "Gerade Passform, offen zu tragen",
+          "details": [
+            "Runder Halsausschnitt",
+            "2 Einschubtaschen",
+            "Leger offen tragbar",
+            "Leichte Struktur"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Blazer Dunkelblau Struktur casual locker leger Business Damen Outerwear",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-blazer-mit-leichter-struktur-dunkelblau-8676760298.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8676760298/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8507180220",
+        "name": "Damen Blazer mit Pailletten Schwarz kariert",
+        "category": {
+          "main": "Damen-Blazer",
+          "layer": "Oberlayer",
+          "type": "Blazer"
+        },
+        "attributes": {
+          "color_hex": "#1A1A1A",
+          "color_name": "Schwarz kariert",
+          "material": "Bouclé-Optik Mix",
+          "fit": "Gerade Passform, 1-Knopf",
+          "details": [
+            "Schwarze Pailletten",
+            "Reverskragen",
+            "2 Pattentaschen",
+            "Futter Beige Animal-Print",
+            "Gerade Passform"
+          ],
+          "formality_score": 4
+        },
+        "vector_content": "Blazer Schwarz Pailletten Glitter Karo Party edel elegant Damen Outerwear",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-blazer-mit-pailletten-schwarz-8507180220.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8507180220/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8685480295",
+        "name": "Damen Blazer Bouclé Blau gestreift",
+        "category": {
+          "main": "Damen-Blazer",
+          "layer": "Oberlayer",
+          "type": "Blazer"
+        },
+        "attributes": {
+          "color_hex": "#4A7BA7",
+          "color_name": "Blau gestreift",
+          "material": "Material-Mix mit Wollanteil, Bouclé-Optik",
+          "fit": "Regular, 2-Knopf",
+          "details": [
+            "Reverskragen",
+            "2 silberfarbene Knöpfe",
+            "2 Pattentaschen",
+            "Effektgarn",
+            "Blaues Nylonfutter"
+          ],
+          "formality_score": 4
+        },
+        "vector_content": "Blazer Bouclé Blau gestreift Woll-Mix elegant Business classic Damen Outerwear",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-blazer-in-boucle-optik-blau-8685480295.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8685480295/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8676790255",
+        "name": "Damen Jacke Blazer-Look Bouclé Rot",
+        "category": {
+          "main": "Damen-Blazer",
+          "layer": "Oberlayer",
+          "type": "Blazer"
+        },
+        "attributes": {
+          "color_hex": "#CC2200",
+          "color_name": "Rot",
+          "material": "Bouclé-Optik mit Effektgarn",
+          "fit": "Gerade Passform, verdeckte Knopfleiste",
+          "details": [
+            "Runder Halsausschnitt",
+            "2 Einschubtaschen",
+            "Fransiger Abschluss",
+            "Bouclé-Optik",
+            "Statement-Farbe"
+          ],
+          "formality_score": 4
+        },
+        "vector_content": "Blazer Bouclé Rot Statement Party elegant edel Damen Outerwear",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-jacke-im-blazer-look-rot-8676790255.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8676790255/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Armband": [
+      {
+        "variant_id": "8739870365",
+        "name": "Damen Perlen-Armband Seestern Gold",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Armband",
+          "type": "Armband"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold/Weiß",
+          "material": "Glasperlen, Metallperlen (vergoldet), Nylonband",
+          "fit": "Elastisch, Einheitsgröße",
+          "details": [
+            "Weiße Glasperlen",
+            "Goldene Kügelchen",
+            "Seestern-Anhänger",
+            "Schmucksteinchen auf Anhänger"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Armband Perlen Gold Seestern Beach Sommer feminin Damen Schmuck casual Party",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-armband-mit-seestern-anhaenger-gold-8739870365.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8739870365/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8739870355",
+        "name": "Damen Perlen-Armband Seestern Silber",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Armband",
+          "type": "Armband"
+        },
+        "attributes": {
+          "color_hex": "#C0C0C0",
+          "color_name": "Silber/Weiß",
+          "material": "Glasperlen, Metallperlen (silber), Nylonband",
+          "fit": "Elastisch, Einheitsgröße",
+          "details": [
+            "Weiße Glasperlen",
+            "Silberne Kügelchen",
+            "Seestern-Anhänger",
+            "Schmucksteinchen auf Anhänger"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Armband Perlen Silber Seestern Beach Sommer feminin Damen Schmuck casual",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-armband-mit-seestern-anhaenger-silber-8739870355.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8739870355/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8745170365",
+        "name": "Damen Armband Bunte Perlen Gold",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Armband",
+          "type": "Armband"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold/Bunt",
+          "material": "Perlen verschiedene Muster, Goldperlen, elastisches Band",
+          "fit": "Elastisch, Einheitsgröße",
+          "details": [
+            "Große gemusterte Perlen",
+            "Goldene Kleinperlen",
+            "Elastisches Band",
+            "Bunt und verspielt"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Armband Perlen bunt gold verspielt casual Beach Sommer Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-armband-mit-bunten-perlen-gold-bunt-8745170365.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8745170365/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "EF-ARM-004",
+        "name": "Damen Armband Set Mehrlagig Silber",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Armband",
+          "type": "Armband"
+        },
+        "attributes": {
+          "color_hex": "#C0C0C0",
+          "color_name": "Silber",
+          "material": "Metall, Legierung",
+          "fit": "Mehrlagig, Einheitsgröße",
+          "details": [
+            "3-lagig",
+            "Verschiedene Kettenstile",
+            "Karabinerverschluss"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Armband mehrlagig Silber Kette elegant casual Party Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-schmuck-armbaender",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/EF-ARM-004/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "EF-ARM-005",
+        "name": "Damen Armband Makramee Natur/Gold",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Armband",
+          "type": "Armband"
+        },
+        "attributes": {
+          "color_hex": "#C8A87A",
+          "color_name": "Natur/Gold",
+          "material": "Textil/Makramee, goldene Perlen",
+          "fit": "Verstellbar, Schiebeknoten",
+          "details": [
+            "Makramee-Knoten",
+            "Goldene Perlen",
+            "Verstellbar",
+            "Boho-Style"
+          ],
+          "formality_score": 1
+        },
+        "vector_content": "Armband Makramee Natur Gold Boho Beach casual Damen Schmuck Sommer",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-schmuck-armbaender",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/EF-ARM-005/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Kette": [
+      {
+        "variant_id": "8745000365",
+        "name": "Damen Kette Zweireihig Gold Leo-Fell",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Kette",
+          "type": "Kette"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold",
+          "material": "Metall (vergoldet), Fake-Fur Leo-Details",
+          "fit": "Zweireihig, längenverstellbar ca. 7 cm, ca. 40 & 52 cm",
+          "details": [
+            "Grobe Kettenglieder (kurze Kette)",
+            "Feine Ankerkette mit rundem Anhänger (lange Kette)",
+            "Leo-Fake-Fur Anhänger",
+            "Längenverstellbar"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Kette Gold zweireihig Leo Animal Print Statement casual Party Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-kette-zweireihig-gold-8745000365.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8745000365/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8721580365",
+        "name": "Damen Kette Herz-Details Gold Perlen",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Kette",
+          "type": "Kette"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold/Weiß",
+          "material": "Metall (vergoldet), Kunstperlen",
+          "fit": "Doppellagig, längenverstellbar ca. 7 cm, ca. 60 cm",
+          "details": [
+            "Herzförmige Details",
+            "Kunstperlen",
+            "Doppellagig",
+            "Längenverstellbar"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Kette Gold Herz Perlen doppellagig feminin Party casual Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-kette-mit-herz-details-gold-weiss-8721580365.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8721580365/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8739790355",
+        "name": "Damen Perlenkette Seestern-Anhänger Silber",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Kette",
+          "type": "Kette"
+        },
+        "attributes": {
+          "color_hex": "#C0C0C0",
+          "color_name": "Silber/Weiß",
+          "material": "Glasperlen, Silber-Metallperlen",
+          "fit": "Ca. 48 cm, Karabinerverschluss, Verlängerungskettchen",
+          "details": [
+            "Weiße Glasperlen",
+            "Silberne Perlen",
+            "Seestern-Anhänger mit Schmucksteinen",
+            "Karabinerverschluss"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Kette Perlen Silber Seestern Beach Sommer Damen Schmuck feminin",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-kette-mit-seestern-anhaenger-silber-8739790355.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8739790355/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8745160365",
+        "name": "Damen Kette Bunte Perlen Gold",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Kette",
+          "type": "Kette"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold/Bunt",
+          "material": "Große gemusterte Perlen, Goldperlen, Metall",
+          "fit": "Ca. 48 cm, Karabinerverschluss, 6 cm Verlängerungskettchen",
+          "details": [
+            "Große Perlen in verschiedenen Mustern",
+            "Goldene Kleinperlen",
+            "Karabinerverschluss",
+            "Verlängerungskettchen"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Kette Perlen bunt gold Statement casual Party Sommer Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-kette-mit-bunten-perlen-gold-bunt-8745160365.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8745160365/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "EF-KET-005",
+        "name": "Damen Kette Feine Goldkette mit Anhänger",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Kette",
+          "type": "Kette"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold",
+          "material": "Metall (vergoldet)",
+          "fit": "Feine Ankerkette ca. 45 cm, verstellbar",
+          "details": [
+            "Feine Ankerkette",
+            "Kleiner Anhänger",
+            "Karabinerverschluss",
+            "Zeitlos elegant"
+          ],
+          "formality_score": 4
+        },
+        "vector_content": "Kette Gold fein Ankerkette Anhänger elegant klassisch zeitlos Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-schmuck",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/EF-KET-005/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Ohrringe": [
+      {
+        "variant_id": "8637590355",
+        "name": "Damen Ohrring-Set Seestern Silber (Stecker + Creolen)",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Ohrringe",
+          "type": "Ohrringe"
+        },
+        "attributes": {
+          "color_hex": "#C0C0C0",
+          "color_name": "Silber",
+          "material": "Metall (silberfarben)",
+          "fit": "Set: Ohrstecker Ø ca. 2 cm + Creolen L ca. 4 cm",
+          "details": [
+            "Ohrstecker Seestern mit Schmucksteinen",
+            "Creolen mit Perlen- und Seestern-Anhänger",
+            "Steckverschluss + Klappschließe",
+            "Urlaubsfeeling"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Ohrringe Set Silber Seestern Creolen Stecker Beach Urlaub Sommer Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-ohrring-set-mit-ohrsteckern-und-creolen-silber-8637590355.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8637590355/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8739820365",
+        "name": "Damen Ohrring-Set Seestern Gold (Stecker + Creolen)",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Ohrringe",
+          "type": "Ohrringe"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold",
+          "material": "Metall (goldfarben)",
+          "fit": "Set: Ohrstecker Ø ca. 2 cm + Creolen L ca. 4 cm",
+          "details": [
+            "Ohrstecker Seestern mit Schmucksteinen",
+            "Creolen mit Perlen- und Seestern-Anhänger",
+            "Steckverschluss + Klappschließe"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Ohrringe Set Gold Seestern Creolen Stecker Beach Urlaub Sommer Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-ohrring-set-mit-ohrsteckern-und-creolen-gold-8739820365.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8739820365/01.jpg",
+          "mask_url": null
+        }
+      }
+    ],
+    "Creolen": [
+      {
+        "variant_id": "8616730365",
+        "name": "Damen Halbcreolen mit Zierperlen Gold",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Ohrringe",
+          "type": "Creolen"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold",
+          "material": "Metall (goldfarben)",
+          "fit": "Halbcreole Ø ca. 2,7 cm, Steckverschluss",
+          "details": [
+            "Besetzt mit Zierperlen",
+            "Halbcreolen-Form",
+            "Steckverschluss",
+            "Funkeln"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Ohrringe Creolen Gold Perlen Halbcreolen funkeln feminin elegant Party Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-schmuck-ohrringe/damen-creolen-mit-zierperlen-gold-8616730365.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8616730365/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8744670322",
+        "name": "Damen Creolen Leo-Optik Gold",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Ohrringe",
+          "type": "Creolen"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold/Leo",
+          "material": "Metall mit Leo-Beschichtung",
+          "fit": "Große Creolen, Steckverschluss",
+          "details": [
+            "Leo-Optik Beschichtung",
+            "Goldfarbene Creolen",
+            "Steckverschluss",
+            "Statement"
+          ],
+          "formality_score": 2
+        },
+        "vector_content": "Ohrringe Creolen Gold Leo Animal Print Statement casual Party Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-creolen-in-leo-optik-gold-hellbraun-8744670322.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8744670322/01.jpg",
+          "mask_url": null
+        }
+      },
+      {
+        "variant_id": "8744760322",
+        "name": "Damen Creolen Zweifarbig Gold/Schwarz",
+        "category": {
+          "main": "Schmuck",
+          "layer": "Ohrringe",
+          "type": "Creolen"
+        },
+        "attributes": {
+          "color_hex": "#FFD700",
+          "color_name": "Gold/Schwarz",
+          "material": "Metall (goldfarben mit schwarzen Details)",
+          "fit": "Creolen, Klappverschluss",
+          "details": [
+            "Goldfarben mit Schwarz allover",
+            "Klappverschluss",
+            "Moderne Zweifarbigkeit"
+          ],
+          "formality_score": 3
+        },
+        "vector_content": "Ohrringe Creolen Gold Schwarz zweifarbig modern edel Party casual Damen Schmuck",
+        "image_assets": {
+          "reference_url": "https://www.ernstings-family.de/damen-creolen-zweifarbig-gold-8744760322.html",
+          "cdn_image_url": "https://images.ernstings-family.com/ean/8744760322/01.jpg",
+          "mask_url": null
+        }
+      }
+    ]
+  }
+}

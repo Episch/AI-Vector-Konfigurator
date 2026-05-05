@@ -1,0 +1,5 @@
+sentence-transformers>=3.0.0
+psycopg[binary]>=3.2.0
+pgvector>=0.3.0
+pillow>=10.0.0
+streamlit>=1.36.0
