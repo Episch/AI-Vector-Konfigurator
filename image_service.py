@@ -77,7 +77,12 @@ def generate_mask(image_url: str) -> Image.Image | None:
     return None
 
 
-def _layer_rank(category_layer: str | None, category_main: str | None) -> int:
+def _layer_rank(
+    category_layer: str | None,
+    category_main: str | None,
+    category_type: str | None = None,
+    variant_id: str | None = None,
+) -> int:
     """
     Kleinster Rank = unten im Composite.
 
@@ -88,6 +93,18 @@ def _layer_rank(category_layer: str | None, category_main: str | None) -> int:
     """
     layer = (category_layer or "").strip().lower()
     main = (category_main or "").strip().lower()
+    ctype = (category_type or "").strip().lower()
+    vid = (variant_id or "").strip().lower()
+
+    # Spezielle Sommer-Regeln:
+    # - Sandalen ganz unten
+    #   (Erkennung über category_type oder category_layer; variant_id wird nur als Fallback betrachtet)
+    if "sandale" in ctype or layer == "footwear" or "sandale" in vid:
+        return 0
+
+    # - Hüte / Sonnenbrillen ganz nach oben
+    if main in {"hüte", "sonnenbrillen"}:
+        return 100
 
     if layer == "hose":
         return 10
@@ -135,8 +152,18 @@ def compose_outfit(product_list: Iterable[dict[str, Any] | ProductImageRef]) -> 
     # Sortieren nach Layer-Rank (unten -> oben)
     def key(p: dict[str, Any] | ProductImageRef) -> int:
         if isinstance(p, ProductImageRef):
-            return _layer_rank(p.category_layer, p.category_main)
-        return _layer_rank(p.get("category_layer"), p.get("category_main"))
+            return _layer_rank(
+                p.category_layer,
+                p.category_main,
+                category_type=p.category_type,
+                variant_id=p.variant_id,
+            )
+        return _layer_rank(
+            p.get("category_layer"),
+            p.get("category_main"),
+            category_type=p.get("category_type"),
+            variant_id=p.get("variant_id"),
+        )
 
     products_sorted = sorted(products, key=key)
 

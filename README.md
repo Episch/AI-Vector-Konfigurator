@@ -80,6 +80,12 @@ python3 stylist_logic.py --anchor 8664500318 --table products > outfit.json
 
 `outfit.json` ist eine Liste aus 3–4 Items (Anker + Ergänzungen).
 
+Beispiel mit Saison/Vibe (Sommer):
+
+```bash
+python3 stylist_logic.py --anchor 8664500318 --keyword Sommer --table products > outfit_sommer.json
+```
+
 ### 3) Produktliste fürs Compositing ableiten und Bild rendern
 
 `image_service.py` erwartet für jedes Item mindestens `variant_id` sowie optional `category_layer`/`category_main` und `cdn_image_url`.
@@ -115,6 +121,12 @@ streamlit run app.py
 
 In der Sidebar kannst du `PG_DSN` und den Tabellennamen setzen.
 
+Zusätzlich:
+
+- **Vibe-Selector**: `Standard`, `Sommer`, `Business`, `Festival`
+  - Wenn `Sommer` gewählt ist, wird `"Sommer"` als Vibe an die Outfit-Logik übergeben.
+- **Sommer-Erklärung**: In der Ergebnisliste werden bei `Sommer` explizit Sommer-Indikatoren aus den Attributen angezeigt (z.B. Material wie „Viskose“, „Leinen-Optik“, „leicht“, „kurz“, …).
+
 ## Outfit-Vorschläge (Stylist-Logik)
 
 `stylist_logic.py` nimmt ein **Anker-Produkt** (per `variant_id`) und sucht passende Ergänzungen per Vektorsuche in PostgreSQL.
@@ -131,6 +143,14 @@ Beispiel:
 python3 stylist_logic.py --anchor 8664500318 --table products
 ```
 
+### Saisonale Sets (Vibe)
+
+Die saisonale Logik wird über `SEASON_CONFIGS` in `stylist_logic.py` gesteuert.
+
+- **Sommer**:
+  - Sucht gezielt Slots wie **Hose (kurz/leicht)**, **Oberteil (Top/T-Shirt/leicht)** und **Hut/Accessoire**
+  - Schließt Produkte mit winterlichen Indikatoren aus (z.B. **Wolle**, **langarm**, **Strick**, …)
+
 ## Bild-Service (Pillow)
 
 `image_service.py` lädt die Produktbilder über `cdn_image_url` (oder Fallback-Schema `https://images.ernstings-family.com/ean/{variant_id}/01.jpg`) und kann ein Outfit-Bild als RGBA-Composite erstellen.
@@ -140,6 +160,11 @@ python3 stylist_logic.py --anchor 8664500318 --table products
   - Hose unten
   - Oberteil/Oberlayer mittig
   - Accessoires/Schmuck/Schuhe oben
+
+Sonderfälle (Sommer-Accessoires):
+
+- `category_main == "Hüte"` oder `category_main == "Sonnenbrillen"` wird **ganz oben** gestapelt.
+- Sandalen werden **ganz unten** gestapelt (Erkennung über `category_type` enthält `"Sandale"` bzw. `category_layer == "Footwear"`).
 
 CLI-Beispiel:
 
@@ -160,9 +185,11 @@ Zusätzlich werden `attributes`, `category`, `image_assets` und das komplette `r
 
 Im Script gibt es:
 
-- `find_matching_items(conn, query_vector, top_k=5)`
+- `find_matching_items(conn, query_vector, top_k=5, keyword_filter=None)`
 
 Die Suche nutzt Cosine-Distanz (`embedding <=> query_vector`) und gibt u.a. `similarity` zurück.
+
+Wenn `keyword_filter` gesetzt ist (z.B. `"Sommer"`), wird zusätzlich in `vector_content` und `attributes` (JSONB) per `ILIKE` nach passenden Begriffen gesucht.
 
 Wenn du Filter (z.B. nur `category_layer='Tasche'` oder `formality_score>=3`) in die Suche integrieren willst, erweitere die SQL-Query in `find_matching_items(...)` um passende `WHERE`-Bedingungen (die Spalten sind bereits vorhanden).
 

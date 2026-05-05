@@ -5,12 +5,71 @@ import argparse
 import json
 import os
 from dataclasses import dataclass
-from typing import Any, Iterable, Sequence
+from typing import Any, Iterable, Sequence, TypedDict
 
 import psycopg
 
 from catalog_vector_db import EMBEDDING_MODEL_NAME, embed_texts, get_connection
 from sentence_transformers import SentenceTransformer
+
+
+class SeasonSlotConfig(TypedDict, total=False):
+    """
+    Konfiguration pro Outfit-Slot (ein zu suchendes Teil).
+    """
+
+    label: str
+    category_layer_in: list[str]
+    category_main_in: list[str]
+    include_terms: list[str]
+    exclude_terms: list[str]
+    top_k: int
+
+
+class SeasonConfig(TypedDict, total=False):
+    """
+    Gesamtkonfiguration für einen Vibe/Season.
+    """
+
+    slots: list[SeasonSlotConfig]
+    global_exclude_terms: list[str]
+
+
+SEASON_CONFIGS: dict[str, SeasonConfig] = {
+    "sommer": {
+        # Sommer: keine Wolle / langarm-lastigen Teile
+        "global_exclude_terms": [
+            "wolle",
+            "woll",
+            "langarm",
+            "longarm",
+            "winter",
+            "fleece",
+            "strick",
+        ],
+        "slots": [
+            {
+                "label": "Hose (kurz/leicht)",
+                "category_layer_in": ["Hose"],
+                "include_terms": ["kurz", "leicht", "sommer"],
+                "top_k": 25,
+            },
+            {
+                "label": "Oberteil (Top/T-Shirt/leicht)",
+                "category_layer_in": ["Oberteil", "Oberlayer"],
+                "include_terms": ["top", "t-shirt", "tshirt", "shirt", "leicht", "sommer"],
+                "top_k": 25,
+            },
+            {
+                "label": "Hut/Accessoire",
+                "category_layer_in": ["Hut"],
+                "category_main_in": ["Accessoires"],
+                "include_terms": ["strohhut", "hut", "beach", "sommer"],
+                "top_k": 25,
+            },
+        ],
+    }
+}
 
 
 @dataclass(frozen=True)
@@ -70,6 +129,9 @@ def _build_where(
     category_main_in: Sequence[str] | None = None,
     min_formality: int | None = None,
     max_formality: int | None = None,
+    keyword_filter: str | None = None,
+    include_terms: Sequence[str] | None = None,
+    exclude_terms: Sequence[str] | None = None,
 ) -> tuple[str, dict[str, Any]]:
     clauses: list[str] = []
     params: dict[str, Any] = {}
@@ -94,6 +156,44 @@ def _build_where(
         clauses.append("formality_score <= %(max_formality)s")
         params["max_formality"] = int(max_formality)
 
+    patterns: list[str] | None = None
+    if keyword_filter:
+        kw = str(keyword_filter).strip()
+        if kw:
+            terms = {
+                kw,
+                "sommer",
+                "leicht",
+                "leinen",
+                "kurz",
+                "sandalen",
+            }
+            patterns = [f"%{t}%" for t in sorted(terms) if t]
+
+    if patterns:
+        clauses.append(
+            "(vector_content ILIKE ANY(%(patterns)s) OR attributes::text ILIKE ANY(%(patterns)s))"
+        )
+        params["patterns"] = patterns
+
+    include_patterns: list[str] | None = None
+    if include_terms:
+        include_patterns = [f"%{str(t).strip()}%" for t in include_terms if str(t).strip()]
+    if include_patterns:
+        clauses.append(
+            "(vector_content ILIKE ANY(%(include_patterns)s) OR attributes::text ILIKE ANY(%(include_patterns)s))"
+        )
+        params["include_patterns"] = include_patterns
+
+    exclude_patterns: list[str] | None = None
+    if exclude_terms:
+        exclude_patterns = [f"%{str(t).strip()}%" for t in exclude_terms if str(t).strip()]
+    if exclude_patterns:
+        clauses.append(
+            "NOT (vector_content ILIKE ANY(%(exclude_patterns)s) OR attributes::text ILIKE ANY(%(exclude_patterns)s))"
+        )
+        params["exclude_patterns"] = exclude_patterns
+
     if clauses:
         return "WHERE " + " AND ".join(clauses), params
     return "", params
@@ -110,6 +210,9 @@ def vector_search(
     category_main_in: Sequence[str] | None = None,
     min_formality: int | None = None,
     max_formality: int | None = None,
+    keyword_filter: str | None = None,
+    include_terms: Sequence[str] | None = None,
+    exclude_terms: Sequence[str] | None = None,
 ) -> list[dict[str, Any]]:
     where_sql, where_params = _build_where(
         exclude_ids=exclude_ids,
@@ -117,6 +220,9 @@ def vector_search(
         category_main_in=category_main_in,
         min_formality=min_formality,
         max_formality=max_formality,
+        keyword_filter=keyword_filter,
+        include_terms=include_terms,
+        exclude_terms=exclude_terms,
     )
 
     sql = f"""
@@ -155,6 +261,7 @@ def build_outfit(
     *,
     table_name: str = "products",
     top_k_per_slot: int = 15,
+    keyword_filter: str | None = None,
 ) -> list[OutfitItem]:
     """
     Gibt eine Liste von 3-4 Teilen zurück, die ein Outfit ergeben.
@@ -176,17 +283,23 @@ def build_outfit(
         *,
         category_layer_in: Sequence[str] | None = None,
         category_main_in: Sequence[str] | None = None,
+        include_terms: Sequence[str] | None = None,
+        exclude_terms: Sequence[str] | None = None,
+        top_k: int | None = None,
     ) -> dict[str, Any] | None:
         candidates = vector_search(
             conn,
             anchor_vec,
-            top_k=top_k_per_slot,
+            top_k=int(top_k or top_k_per_slot),
             table_name=table_name,
             exclude_ids=exclude_ids,
             category_layer_in=category_layer_in,
             category_main_in=category_main_in,
             min_formality=min_formality,
             max_formality=max_formality,
+            keyword_filter=keyword_filter,
+            include_terms=include_terms,
+            exclude_terms=exclude_terms,
         )
         chosen = _first(candidates)
         if chosen is None:
@@ -195,24 +308,40 @@ def build_outfit(
         picked.append(chosen)
         return chosen
 
-    # Regel-Check (minimal, erweiterbar):
-    # Wenn der Anker ein (Top-)Teil ist, suchen wir gezielt: Hose + Accessoires
-    is_top = anchor_layer in {"Oberteil", "Oberlayer"} or (anchor_main or "").lower().startswith("damen-")
+    vibe = (keyword_filter or "").strip().lower()
+    season_cfg = SEASON_CONFIGS.get(vibe)
 
-    if is_top:
-        pick_one(category_layer_in=["Hose"])
+    if season_cfg and season_cfg.get("slots"):
+        global_exclude = season_cfg.get("global_exclude_terms", [])
 
-        # 1 Accessoire (Tasche/Gürtel/Tuch/Hut) + 1 Schmuck oder Schuhe, wenn möglich
-        pick_one(category_main_in=["Accessoires"])
-
-        second = pick_one(category_main_in=["Schmuck"])
-        if second is None:
-            pick_one(category_main_in=["Schuhe"])
+        # Saisonales Set: feste Slots (z.B. Sommer: kurz/leicht, kein Wolle/langarm)
+        for slot in season_cfg["slots"]:
+            pick_one(
+                category_layer_in=slot.get("category_layer_in"),
+                category_main_in=slot.get("category_main_in"),
+                include_terms=slot.get("include_terms"),
+                exclude_terms=[*(slot.get("exclude_terms", []) or []), *global_exclude],
+                top_k=slot.get("top_k", top_k_per_slot),
+            )
     else:
-        # Fallback: wenn der Anker kein Top ist, ergänze mit einem Top und 1-2 Accessoires.
-        pick_one(category_layer_in=["Oberteil", "Oberlayer"])
-        pick_one(category_main_in=["Accessoires"])
-        pick_one(category_main_in=["Schmuck"])
+        # Default-Regeln (fallback), abhängig vom Anker
+        # Wenn der Anker ein (Top-)Teil ist, suchen wir gezielt: Hose + Accessoires
+        is_top = anchor_layer in {"Oberteil", "Oberlayer"} or (anchor_main or "").lower().startswith("damen-")
+
+        if is_top:
+            pick_one(category_layer_in=["Hose"])
+
+            # 1 Accessoire (Tasche/Gürtel/Tuch/Hut) + 1 Schmuck oder Schuhe, wenn möglich
+            pick_one(category_main_in=["Accessoires"])
+
+            second = pick_one(category_main_in=["Schmuck"])
+            if second is None:
+                pick_one(category_main_in=["Schuhe"])
+        else:
+            # Fallback: wenn der Anker kein Top ist, ergänze mit einem Top und 1-2 Accessoires.
+            pick_one(category_layer_in=["Oberteil", "Oberlayer"])
+            pick_one(category_main_in=["Accessoires"])
+            pick_one(category_main_in=["Schmuck"])
 
     # Maximal 3 Ergänzungen (mit Anker = 4 Teile)
     picked = picked[:3]
@@ -241,6 +370,7 @@ def build_outfit(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Outfit-Vorschläge aus pgvector anhand eines Anker-Produkts")
     parser.add_argument("--anchor", required=True, help="variant_id des Anker-Produkts")
+    parser.add_argument("--keyword", default=None, help="Optionaler Keyword-Filter (z.B. 'Sommer')")
     parser.add_argument(
         "--dsn",
         default=os.environ.get("PG_DSN", "postgresql://postgres:postgres@localhost:5432/postgres"),
@@ -251,7 +381,7 @@ def main() -> None:
 
     conn = get_connection(args.dsn)
     try:
-        outfit = build_outfit(conn, args.anchor, table_name=args.table)
+        outfit = build_outfit(conn, args.anchor, table_name=args.table, keyword_filter=args.keyword)
         print(json.dumps([o.__dict__ for o in outfit], ensure_ascii=False, indent=2))
     finally:
         conn.close()

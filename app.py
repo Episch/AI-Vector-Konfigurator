@@ -26,6 +26,7 @@ class CatalogItem:
     category_type: str | None
     formality_score: int | None
     vector_content: str | None
+    attributes: dict[str, Any]
     reference_url: str | None
     cdn_image_url: str | None
     mask_url: str | None
@@ -78,6 +79,7 @@ def load_catalog_items(json_path: str) -> list[CatalogItem]:
                     category_type=category.get("type"),
                     formality_score=_as_int_or_none(attributes.get("formality_score")),
                     vector_content=p.get("vector_content"),
+                    attributes=attributes,
                     reference_url=image_assets.get("reference_url"),
                     cdn_image_url=image_assets.get("cdn_image_url"),
                     mask_url=image_assets.get("mask_url"),
@@ -140,6 +142,51 @@ def _nano_banana_prompt(outfit: list[OutfitItem]) -> dict[str, Any]:
     }
 
 
+def _catalog_index(items: list[CatalogItem]) -> dict[str, CatalogItem]:
+    return {x.variant_id: x for x in items}
+
+
+def _find_summer_reasons(item: CatalogItem) -> list[str]:
+    """
+    Heuristik: zeigt explizit Sommer-Indikatoren aus Attributes/Vector-Content.
+    """
+    reasons: list[str] = []
+
+    material = str(item.attributes.get("material") or "")
+    details = item.attributes.get("details") or []
+    if not isinstance(details, list):
+        details = []
+    details_text = " ".join(str(d) for d in details)
+    vc = str(item.vector_content or "")
+
+    hay = " | ".join([material, details_text, vc]).lower()
+
+    # explizite Material-/Sommer-Attribute, die man gut anzeigen kann
+    if "100% viskose" in hay or "viskose" in hay or "ecovero" in hay:
+        reasons.append(f"Material: {material}".strip())
+    if "leinen" in hay:
+        reasons.append("Leinen/Leinen-Optik gefunden")
+    if "leicht" in hay:
+        reasons.append("Attribut: leicht")
+    if "sommer" in hay:
+        reasons.append("Keyword: Sommer")
+    if "strohhut" in hay:
+        reasons.append("Sommer-Accessoire: Strohhut")
+    if "beach" in hay or "urlaub" in hay:
+        reasons.append("Vibe: Beach/Urlaub")
+    if "kurz" in hay or "culotte" in hay:
+        reasons.append("Schnitt/Länge: kurz/luftig")
+
+    # deduplizieren
+    out: list[str] = []
+    seen = set()
+    for r in reasons:
+        if r and r not in seen:
+            seen.add(r)
+            out.append(r)
+    return out
+
+
 def main() -> None:
     st.set_page_config(page_title="Ernsting's Family – KI Stylist", layout="wide")
     st.title("Ernsting's Family – KI Stylist (Demo)")
@@ -152,6 +199,7 @@ def main() -> None:
     if not items:
         st.error("Katalog enthält keine Produkte (oder Format unerwartet).")
         st.stop()
+    catalog_by_id = _catalog_index(items)
 
     with st.sidebar:
         st.header("Datenbank")
@@ -161,6 +209,17 @@ def main() -> None:
             help="Muss auf eine PostgreSQL-DB mit pgvector zeigen, die bereits mit `catalog_vector_db.py` befüllt wurde.",
         )
         table = st.text_input("Tabelle", value="products")
+        vibe_choice = st.radio(
+            "Wähle deinen Vibe",
+            options=["Standard", "Sommer", "Business", "Festival"],
+            index=0,
+            horizontal=False,
+        )
+        keyword = st.text_input(
+            "Keyword (optional)",
+            value="",
+            help="Optionaler Filter (z.B. 'Sommer'). Einschränkung über vector_content/attributes (ILIKE).",
+        )
         st.divider()
         st.header("Hinweis")
         st.write("Outfits werden aus der Vektor-DB berechnet. Falls die DB leer ist, zuerst `catalog_vector_db.py` ausführen.")
@@ -197,9 +256,15 @@ def main() -> None:
     if st.session_state.outfit is None:
         with st.spinner("Berechne Outfit-Vorschläge aus der Vektor-DB..."):
             try:
+                vibe_param = None if vibe_choice == "Standard" else vibe_choice
                 conn = get_connection(dsn)
                 try:
-                    outfit = build_outfit(conn, anchor_id, table_name=table)
+                    outfit = build_outfit(
+                        conn,
+                        anchor_id,
+                        table_name=table,
+                        keyword_filter=(vibe_param or (keyword.strip() or None)),
+                    )
                 finally:
                     conn.close()
                 st.session_state.outfit = outfit
@@ -220,12 +285,25 @@ def main() -> None:
     with left:
         st.markdown("### Vorgeschlagene Teile")
         for x in outfit:
-            st.write(
+            header = (
                 f"- **{x.name or x.variant_id}** "
                 f"({x.category_layer or '-'} / {x.category_type or '-'}, "
                 f"Formality: {x.formality_score if x.formality_score is not None else '-'}, "
-                f"Similarity: {x.similarity:.3f}" if x.similarity is not None else ""
             )
+            if x.similarity is not None:
+                header += f"Similarity: {x.similarity:.3f})"
+            else:
+                header += ")"
+
+            st.write(header)
+
+            # Sommer: zeige explizit Sommer-Attribute, die als Indikator dienten
+            if vibe_choice == "Sommer":
+                cat_item = catalog_by_id.get(x.variant_id)
+                if cat_item:
+                    reasons = _find_summer_reasons(cat_item)
+                    if reasons:
+                        st.caption("Sommer-Indikatoren: " + " · ".join(reasons))
             if x.cdn_image_url:
                 st.image(x.cdn_image_url, width=160)
 

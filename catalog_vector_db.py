@@ -229,8 +229,34 @@ def find_matching_items(
     conn: psycopg.Connection,
     query_vector: list[float],
     top_k: int = 5,
+    keyword_filter: str | None = None,
     table_name: str = "products",
 ) -> list[dict[str, Any]]:
+    patterns: list[str] | None = None
+    if keyword_filter:
+        kw = str(keyword_filter).strip()
+        if kw:
+            terms = {
+                kw,
+                "sommer",
+                "leicht",
+                "leinen",
+                "kurz",
+                "sandalen",
+            }
+            patterns = [f"%{t}%" for t in sorted(terms) if t]
+
+    where_sql = ""
+    params: dict[str, Any] = {"q": query_vector, "k": int(top_k)}
+    if patterns:
+        where_sql = """
+        WHERE (
+          vector_content ILIKE ANY(%(patterns)s)
+          OR attributes::text ILIKE ANY(%(patterns)s)
+        )
+        """
+        params["patterns"] = patterns
+
     sql = f"""
     SELECT
       variant_id,
@@ -244,11 +270,12 @@ def find_matching_items(
       mask_url,
       1 - (embedding <=> %(q)s) AS similarity
     FROM {table_name}
+    {where_sql}
     ORDER BY embedding <=> %(q)s
     LIMIT %(k)s;
     """
     with conn.cursor() as cur:
-        cur.execute(sql, {"q": query_vector, "k": int(top_k)})
+        cur.execute(sql, params)
         cols = [d.name for d in cur.description]
         return [dict(zip(cols, row)) for row in cur.fetchall()]
 
