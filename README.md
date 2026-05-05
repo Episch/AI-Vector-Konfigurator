@@ -1,4 +1,4 @@
-# Ernsting's Family Katalog – Embeddings + PostgreSQL (pgvector)
+# Katalog – Embeddings + PostgreSQL (pgvector)
 
 Dieses Mini-Projekt lädt den Produktkatalog aus `_CATALOG_COMPLETE.json`, **flacht** die Daten ab, erzeugt pro Produkt ein **Embedding** (Sentence-Transformers, Modell `all-MiniLM-L6-v2`) und speichert alles in einer **lokalen PostgreSQL-Datenbank mit pgvector**.  
 Anschließend kannst du über Vektorsuche ähnliche Produkte finden.
